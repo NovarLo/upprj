@@ -1,0 +1,377 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	TemplateName="Other C/C++"
+	WorkingDir="../">
+	<Config
+		Name="Debug"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdElevator"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -g -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Config
+		Name="Release"
+		Type="cpp"
+		DebugCallbackName="gdb"
+		OutputFile="%bdElevator"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveCurrent"
+				OutputExts="*.o"
+				RunFromDir="%rw">
+				<Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link">
+				<Exec CmdLine='cc -O -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+		</Menu>
+	</Config>
+	<Rules Name="Compile">
+		<Rule
+			InputExts="*.s"
+			OutputExts="*.o"
+			LinkObject="1">
+			<Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+		</Rule>
+	</Rules>
+	<Files>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go"
+			GUID="{79EBE6D6-58D6-4D37-452B-56FD8294BAA9}">
+			<Folder
+				Name="wedo"
+				Filters=""
+				GUID="{A8D230A0-ACA7-495B-8BC1-244F8DDBE9B8}">
+				<F N="../App/app_audio.c"/>
+				<F N="../App/app_fram.c"/>
+				<F N="../App/app_mmi.c"/>
+				<F N="../App/app_sensor.c"/>
+				<F N="../App/app_wave.c"/>
+				<F N="../App/arm_sin_f32.c"/>
+			</Folder>
+			<Folder
+				Name="hal_drv"
+				Filters=""
+				GUID="{8D18F872-9009-4452-DAB7-2DB53251C682}">
+				<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f407xx.s"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cryp.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cryp_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dcmi.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hash.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hash_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hcd.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_irda.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_iwdg.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_msp_template.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_nand.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_nor.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pccard.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rng.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sai.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sdram.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_smartcard.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_usart.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_wwdg.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c"/>
+				<F N="../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c"/>
+				<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c"/>
+			</Folder>
+			<Folder
+				Name="app"
+				Filters=""
+				GUID="{96027B02-F717-4D6A-8A0E-61ED8D635DA7}">
+				<F N="../Src/main.c"/>
+				<F N="../Src/stm32f4xx_hal_msp.c"/>
+				<F N="../Src/stm32f4xx_it.c"/>
+			</Folder>
+			<Folder
+				Name="ido"
+				Filters=""
+				GUID="{8DC56A89-752F-4FFA-AF60-21CB76971CB5}">
+				<F N="../novar/app_bcd.c"/>
+				<F N="../novar/app_comser.c"/>
+				<F N="../novar/app_crc.c"/>
+				<F N="../novar/app_datrec.c"/>
+				<F N="../novar/app_dht22.c"/>
+				<F N="../novar/app_fifo.c"/>
+				<F N="../novar/app_finger.c"/>
+				<F N="../novar/app_key.c"/>
+				<F N="../novar/app_led.c"/>
+				<F N="../novar/app_linear.c"/>
+				<F N="../novar/app_mg2639d.c"/>
+				<F N="../novar/app_network.c"/>
+				<F N="../novar/app_prtc.c"/>
+				<F N="../novar/app_sds011.c"/>
+				<F N="../novar/app_sim7600ce.c"/>
+				<F N="../novar/app_upsnr.c"/>
+			</Folder>
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.h++;*.inc;*.sh;*.cpy;*.if"
+			GUID="{5288BBBA-D5B9-4857-A36D-614A023D7299}">
+			<Folder
+				Name="app_h"
+				Filters=""
+				GUID="{2EAF10AC-A45A-43BA-09AE-2B8A7DD1A6BE}">
+				<F N="../App/app_audio.h"/>
+				<F N="../App/app_fram.h"/>
+				<F N="../App/app_mmi.h"/>
+				<F N="../App/app_sensor.h"/>
+				<F N="../App/app_user.h"/>
+				<F N="../App/app_wave.h"/>
+			</Folder>
+			<Folder
+				Name="novar"
+				Filters=""
+				GUID="{E875B070-707D-4A12-409E-16462B21F9B9}">
+				<F N="../novar/app_bcd.h"/>
+				<F N="../novar/app_comser.h"/>
+				<F N="../novar/app_crc.h"/>
+				<F N="../novar/app_datrec.h"/>
+				<F N="../novar/app_dht22.h"/>
+				<F N="../novar/app_fifo.h"/>
+				<F N="../novar/app_finger.h"/>
+				<F N="../novar/app_key.h"/>
+				<F N="../novar/app_led.h"/>
+				<F N="../novar/app_linear.h"/>
+				<F N="../novar/app_prtc.h"/>
+				<F N="../novar/app_sds011.h"/>
+				<F N="../novar/app_upsnr.h"/>
+				<F N="../novar/app_mg2639d.h"/>
+				<F N="../novar/app_network.h"/>
+				<F N="../novar/app_sim7600ce.h"/>
+			</Folder>
+			<F N="../Drivers/CMSIS/Include/arm_common_tables.h"/>
+			<F N="../Drivers/CMSIS/Include/arm_const_structs.h"/>
+			<F N="../Drivers/CMSIS/Include/arm_math.h"/>
+			<F N="../Drivers/CMSIS/RTOS/cmsis_os.h"/>
+			<F N="../Drivers/CMSIS/Include/core_cm0.h"/>
+			<F N="../Drivers/CMSIS/Include/core_cm0plus.h"/>
+			<F N="../Drivers/CMSIS/Include/core_cm3.h"/>
+			<F N="../Drivers/CMSIS/Include/core_cm4.h"/>
+			<F N="../Drivers/CMSIS/Include/core_cm4_simd.h"/>
+			<F N="../Drivers/CMSIS/Include/core_cmFunc.h"/>
+			<F N="../Drivers/CMSIS/Include/core_cmInstr.h"/>
+			<F N="../Drivers/CMSIS/Include/core_sc000.h"/>
+			<F N="../Drivers/CMSIS/Include/core_sc300.h"/>
+			<F N="../Inc/stdint.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f415xx.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f417xx.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f437xx.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f439xx.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"/>
+			<F N="../Inc/stm32f4xx_hal_conf.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_conf_template.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_crc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cryp.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cryp_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dcmi.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma2d.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hash.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hash_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_irda.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_iwdg.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_ltdc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_nand.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_nor.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pccard.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rng.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sai.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sdram.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_smartcard.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_wwdg.h"/>
+			<F N="../Inc/stm32f4xx_it.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fmc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h"/>
+			<F N="../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h"/>
+			<F N="../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"/>
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"
+			GUID="{9B81EB56-39C3-438C-DE2A-8543789F3F80}"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"
+			GUID="{7D658308-A259-48F3-41B6-826FDB5FBCB9}"/>
+		<Folder
+			Name="Other Files"
+			Filters=""
+			GUID="{8E1D09FB-829C-488B-9B3C-0AAAF56B4BBB}"/>
+	</Files>
+</Project>
